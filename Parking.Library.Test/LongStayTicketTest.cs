@@ -8,7 +8,7 @@ namespace Parking.Library.Test
         const float dailyRate = 7.50F;
 
         [Fact]
-        public void GivenValidLongStayTicketFor3DaysFirstAndLastDaysAreOutsideChargeableTimes_WhenCalculateChargeCalled_ThenReturnsChargeAs22_50()
+        public void GivenValidLongStayTicketFor3DaysFirstAndLastDaysAreOutsideChargeableTimes_WhenCalculateChargeCalled_ThenReturnsChargeAs7_50()
         {
             // arrange
             var fromDateTime = DateTimeParse("07/09/2020 18:01:00");
@@ -25,7 +25,7 @@ namespace Parking.Library.Test
         }
 
         [Fact]
-        public void GivenValidLongStayTicketFor3Days_WhenCalculateChargeCalled_ThenReturnsChargeAs22_50()
+        public void GivenValidLongStayTicketFor3Days_WhenCalculateChargeCalled_ThenReturnsChargeAs15_00()
         {
             // arrange
             var fromDateTime = DateTimeParse("07/09/2020 07:50:00");
