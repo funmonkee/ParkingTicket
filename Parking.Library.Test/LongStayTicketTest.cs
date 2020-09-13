@@ -8,6 +8,23 @@ namespace Parking.Library.Test
         const float dailyRate = 7.50F;
 
         [Fact]
+        public void GivenValidLongStayTicketFor3DaysFirstAndLastDaysAreOutsideChargeableTimes_WhenCalculateChargeCalled_ThenReturnsChargeAs22_50()
+        {
+            // arrange
+            var fromDateTime = DateTimeParse("07/09/2020 18:01:00");
+            var toDateTime = DateTimeParse("09/09/2020 07:59:00");
+            var longTicket = new LongStayTicket(fromDateTime, Constants.LongStayPrice);
+
+            var expectedCharge = 1 * dailyRate; 
+
+            // act
+            var charge = longTicket.CalculateCharge(toDateTime);
+
+            // assert
+            Assert.Equal(Round(expectedCharge), Round(charge.Value));
+        }
+
+        [Fact]
         public void GivenValidLongStayTicketFor3Days_WhenCalculateChargeCalled_ThenReturnsChargeAs22_50()
         {
             // arrange
