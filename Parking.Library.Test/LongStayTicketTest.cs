@@ -32,7 +32,7 @@ namespace Parking.Library.Test
             var toDateTime = DateTimeParse("09/09/2020 05:20:00");
             var longTicket = new LongStayTicket(fromDateTime, Constants.LongStayPrice);
 
-            var expectedCharge = 3 * dailyRate; // 3 * 7.5 = 22.50
+            var expectedCharge = 2 * dailyRate; // 2 * 7.5 = 15.0, since last day is before tne start of business
 
             // act
             var charge = longTicket.CalculateCharge(toDateTime);
@@ -70,7 +70,7 @@ namespace Parking.Library.Test
             var charge = longTicket.CalculateCharge(toDateTime);
 
             // assert
-            Assert.Equal(Round(15.00), Round(charge.Value));
+            Assert.Equal(Round(7.5), Round(charge.Value));
         }
 
         [Fact]

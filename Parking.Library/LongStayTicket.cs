@@ -11,6 +11,21 @@ namespace Parking.Library
         {
         }
 
-        public override double DurationUnits() { return Util.GetDays(this.StartTime, this.EndTime.Value ); }
+        public override double DurationUnits() 
+        { 
+            var days = Util.GetDays(this.StartTime, this.EndTime.Value ); 
+
+            if (this.StartTime.Hour >= Constants.BusinessHoursEnd)
+            {
+                days--;
+            }
+
+            if (this.EndTime.Value.Hour < Constants.BusinessHoursStart)
+            {
+                days--;
+            }
+
+            return days > 0 ? days : 0;
+        }
     }
 }
